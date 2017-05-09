@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;g
 
-class ThreadController extends Controller
+class ThreadsController extends Controller
 {
     /**
      * Display a listing of the resource.
