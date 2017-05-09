@@ -17,9 +17,9 @@ class ParticipateInForumTest extends TestCase
         $thread = factory('App\Thread')->create();
         $reply = factory('App\Reply')->create();
 
-        $this->post('/threads/'.$thread->id.'/replies', $reply->toArray());
+        $this->post($thread->path().'/replies', $reply->toArray());
 
-        $this->get('/threads/'.$thread->id)
+        $this->get($thread->path())
             ->assertSee($reply->body);
     }
 }
