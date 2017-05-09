@@ -22,4 +22,12 @@ class ParticipateInForumTest extends TestCase
         $this->get($thread->path())
             ->assertSee($reply->body);
     }
+
+    /** @test */
+    public function unauthenticated_users_may_not_add_replies()
+    {
+        $this->expectException('Illuminate\Auth\AuthenticationException');
+
+        $this->post('/threads/1/replies', []);
+    }
 }
