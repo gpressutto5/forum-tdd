@@ -38,16 +38,24 @@
             </div>
         </div>
 
-        @if (auth()->check())
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            Test
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @if (auth()->check())
+                    {!! Form::open(['route' => ['add_reply', $thread->id], 'method' => 'POST']) !!}
+                        <!--- Body Field --->
+                        <div class="form-group">
+                            {!! Form::textarea('body', null, ['class' => 'form-control', 'placeholder' => 'Have something to say?', 'rows' => 5]) !!}
                         </div>
-                    </div>
-                </div>
+
+                        <!--- Post Field --->
+                        <div class="form-group">
+                            {!! Form::submit('Post', ['class' => 'btn btn-primary']) !!}
+                        </div>
+                    {!! Form::close() !!}
+                @else
+                    <p class="text-center">Please <a href="{{ route('login') }}">sign in</a> to participate in this discussion.</p>
+                @endif
             </div>
-        @endif
+        </div>
     </div>
 @endsection
