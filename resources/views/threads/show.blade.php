@@ -12,7 +12,9 @@
                     </div>
 
                     <div class="panel-footer">
-                        {{ $thread->created_at->diffForHumans() }}
+                        <a href="#">
+                            {{ $thread->creator->name }}
+                        </a> posted {{ $thread->created_at->diffForHumans() }}
                     </div>
                 </div>
             </div>
@@ -24,16 +26,14 @@
             <div class="col-md-8 col-md-offset-2">
                 @foreach($thread->replies as $reply)
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            {{ $reply->owner->name }}
-                        </div>
-
                         <div class="panel-body">
                             {{ $reply->body }}
                         </div>
 
                         <div class="panel-footer">
-                            {{ $reply->created_at->diffForHumans() }}
+                            <a href="#">
+                                {{ $reply->owner->name }}
+                            </a> replied {{ $reply->created_at->diffForHumans() }}
                         </div>
                     </div>
                 @endforeach
