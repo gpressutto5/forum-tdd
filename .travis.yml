@@ -1,0 +1,14 @@
+language: php
+dist: trusty
+sudo: required
+php:
+  - '7.1'
+install:
+  - composer install --no-interaction
+  - cp .env.example .env
+script: phpunit
+cache:
+  apt: true
+  directories:
+    - $TRAVIS_BUILD_DIR/vendor
+    - $HOME/.composer/cache
