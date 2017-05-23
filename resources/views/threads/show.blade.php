@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 @if (auth()->check())
-                    {!! Form::open(['route' => ['add_reply', $thread->id], 'method' => 'POST']) !!}
+                    {!! Form::open(['route' => ['add_reply', $thread->channel->slug, $thread->id], 'method' => 'POST']) !!}
                         <!--- Body Field --->
                         <div class="form-group">
                             {!! Form::textarea('body', null, ['class' => 'form-control', 'placeholder' => 'Have something to say?', 'rows' => 5]) !!}
