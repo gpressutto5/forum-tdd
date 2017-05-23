@@ -6,6 +6,7 @@ php:
 install:
   - composer install --no-interaction
   - cp .env.example .env
+  - php artisan key:generate
 script: phpunit
 cache:
   apt: true
