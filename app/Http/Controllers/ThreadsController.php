@@ -41,7 +41,13 @@ class ThreadsController extends Controller
      */
     public function create()
     {
-        return view('threads.create');
+        $channels = Channel::all();
+        $selectArray = ['' => 'Chose One...'];
+        foreach ($channels as $channel) {
+            $selectArray[$channel->id] = $channel->name;
+        }
+
+        return view('threads.create', compact('selectArray'));
     }
 
     /**
