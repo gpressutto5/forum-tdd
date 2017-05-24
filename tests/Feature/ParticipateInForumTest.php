@@ -10,7 +10,7 @@ class ParticipateInForumTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_may_participate_in_forum_threads()
+    function an_authenticated_user_may_participate_in_forum_threads()
     {
         $this->signIn();
 
@@ -24,7 +24,7 @@ class ParticipateInForumTest extends TestCase
     }
 
     /** @test */
-    public function unauthenticated_users_may_not_add_replies()
+    function unauthenticated_users_may_not_add_replies()
     {
         $this->withExceptionHandling()
             ->post('/threads/slug/1/replies', [])
@@ -32,7 +32,7 @@ class ParticipateInForumTest extends TestCase
     }
 
     /** @test */
-    public function a_reply_requires_a_body()
+    function a_reply_requires_a_body()
     {
         $this->withExceptionHandling()->signIn();
 

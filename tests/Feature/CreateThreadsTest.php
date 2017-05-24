@@ -10,7 +10,7 @@ class CreateThreadsTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function an_authenticated_user_can_create_new_forum_threads()
+    function an_authenticated_user_can_create_new_forum_threads()
     {
         $this->signIn();
 
@@ -24,7 +24,7 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
-    public function guests_may_not_create_threads()
+    function guests_may_not_create_threads()
     {
         $this->withExceptionHandling();
 
@@ -36,21 +36,21 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
-    public function a_thread_requires_a_title()
+    function a_thread_requires_a_title()
     {
         $this->publishThread(['title' => null])
             ->assertSessionHasErrors('title');
     }
 
     /** @test */
-    public function a_thread_requires_a_body()
+    function a_thread_requires_a_body()
     {
         $this->publishThread(['body' => null])
             ->assertSessionHasErrors('body');
     }
 
     /** @test */
-    public function a_thread_requires_a_valid_channel()
+    function a_thread_requires_a_valid_channel()
     {
         create('App\Channel');
 

@@ -20,13 +20,13 @@ class ThreadTest extends TestCase
     }
 
     /** @test */
-    public function a_thread_has_a_creator()
+    function a_thread_has_a_creator()
     {
         $this->assertInstanceOf('App\User', $this->thread->creator);
     }
 
     /** @test */
-    public function a_thread_can_add_a_reply()
+    function a_thread_can_add_a_reply()
     {
         $this->thread->addReply([
             'body' => 'Foobar',
@@ -37,7 +37,7 @@ class ThreadTest extends TestCase
     }
 
     /** @test */
-    public function a_thread_belongs_to_a_channel()
+    function a_thread_belongs_to_a_channel()
     {
         $thread = create('App\Thread');
 
@@ -45,7 +45,7 @@ class ThreadTest extends TestCase
     }
 
     /** @test */
-    public function a_thread_can_make_a_string_path()
+    function a_thread_can_make_a_string_path()
     {
         $thread = make('App\Thread');
         $this->assertEquals("/threads/{$thread->channel->slug}/{$thread->id}", $thread->path());
