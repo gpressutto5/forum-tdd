@@ -10,9 +10,10 @@
                     <div class="panel-body">
                         @foreach ($threads as $thread)
                             <article>
-                                <a href="{{ $thread->path() }}">
-                                    <h4>{{ $thread->title }}</h4>
-                                </a>
+                                <h4>
+                                    <a href="{{ $thread->path() }}">{{ $thread->title }}</a>
+                                    @include('helpers.channel_badge')
+                                </h4>
                                 <div class="body">{{ $thread->body }}</div>
                             </article>
                             <hr>

@@ -15,4 +15,9 @@ class Channel extends Model
     {
         return $this->hasMany(Thread::class);
     }
+
+    public function getColorAttribute()
+    {
+        return '#'.substr(md5($this->name), 0, 6);
+    }
 }

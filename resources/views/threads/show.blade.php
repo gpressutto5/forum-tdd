@@ -5,14 +5,17 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ $thread->title }}</div>
+                    <div class="panel-heading">
+                        {{ $thread->title }}
+                        @include('helpers.channel_badge')
+                    </div>
 
                     <div class="panel-body">
                         {{ $thread->body }}
                     </div>
 
                     <div class="panel-footer">
-                        <a href="#">
+                        <a href="/threads?by={{ $thread->creator->name }}">
                             {{ $thread->creator->name }}
                         </a> posted {{ $thread->created_at->diffForHumans() }}
                     </div>
@@ -29,7 +32,7 @@
                         </div>
 
                         <div class="panel-footer">
-                            <a href="#">
+                            <a href="/threads?by={{ $reply->owner->name }}">
                                 {{ $reply->owner->name }}
                             </a> replied {{ $reply->created_at->diffForHumans() }}
                         </div>

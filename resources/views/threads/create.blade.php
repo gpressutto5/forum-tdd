@@ -19,7 +19,11 @@
                             <!--- Channel Field --->
                             <div class="form-group">
                                 {!! Form::label('channel_id', 'Channel:') !!}
-                                {!! Form::select('channel_id', $selectArray, null, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::select('channel_id', $selectArray, null, [
+                                    'class' => 'form-control',
+                                    'placeholder'=> 'Chose one...',
+                                    'required'
+                                ])!!}
                             </div>
 
                             <!--- Title Field --->
