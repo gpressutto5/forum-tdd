@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         {{ $thread->title }}
@@ -15,16 +15,12 @@
                     </div>
 
                     <div class="panel-footer">
-                        <a href="/threads?by={{ $thread->creator->name }}">
+                        <a href="{{ $thread->creator->profile }}">
                             {{ $thread->creator->name }}
                         </a> posted {{ $thread->created_at->diffForHumans() }}
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 @foreach($thread->replies as $reply)
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -32,17 +28,13 @@
                         </div>
 
                         <div class="panel-footer">
-                            <a href="/threads?by={{ $reply->owner->name }}">
+                            <a href="{{ $reply->owner->profile }}">
                                 {{ $reply->owner->name }}
                             </a> replied {{ $reply->created_at->diffForHumans() }}
                         </div>
                     </div>
                 @endforeach
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
                 @if (auth()->check())
                     {!! Form::open(['route' => ['add_reply', $thread->channel->slug, $thread->id], 'method' => 'POST']) !!}
                         <!--- Body Field --->
@@ -58,6 +50,14 @@
                 @else
                     <p class="text-center">Please <a href="{{ route('login') }}">sign in</a> to participate in this discussion.</p>
                 @endif
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p>This thread was published {{ $thread->created_at->diffForHumans() }} by <a href="{{ $thread->creator->profile }}">{{ $thread->creator->name }}</a> and currently has {{ $thread->replies()->count() }} replies.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
