@@ -15,6 +15,7 @@
                                     @include('helpers.channel_badge')
                                 </h4>
                                 <div class="body">{{ $thread->body }}</div>
+                                <strong>{{ $thread->replies_count }} {{ str_plural('reply', $thread->replies_count) }}</strong>
                             </article>
                             <hr>
                         @endforeach
