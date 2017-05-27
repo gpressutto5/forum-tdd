@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                @foreach($thread->replies as $reply)
+                @foreach($replies as $reply)
                     <div class="panel panel-default">
                         <div class="panel-body">
                             {{ $reply->body }}
@@ -34,6 +34,8 @@
                         </div>
                     </div>
                 @endforeach
+
+                {{ $replies->links() }}
 
                 @if (auth()->check())
                     {!! Form::open(['route' => ['add_reply', $thread->channel->slug, $thread->id], 'method' => 'POST']) !!}
@@ -55,7 +57,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <p>This thread was published {{ $thread->created_at->diffForHumans() }} by <a href="{{ $thread->creator->profile }}">{{ $thread->creator->name }}</a> and currently has {{ $thread->replies()->count() }} replies.</p>
+                        <p>This thread was published {{ $thread->created_at->diffForHumans() }} by <a href="{{ $thread->creator->profile }}">{{ $thread->creator->name }}</a> and currently has {{ $thread->replies_count }} {{ str_plural('comment', $thread->replies_count) }}.</p>
                     </div>
                 </div>
             </div>
