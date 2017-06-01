@@ -22,17 +22,7 @@
                 </div>
 
                 @foreach($replies as $reply)
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            {{ $reply->body }}
-                        </div>
-
-                        <div class="panel-footer">
-                            <a href="{{ $reply->owner->profile }}">
-                                {{ $reply->owner->name }}
-                            </a> replied {{ $reply->created_at->diffForHumans() }}
-                        </div>
-                    </div>
+                    @include('threads.reply')
                 @endforeach
 
                 {{ $replies->links() }}

@@ -26,3 +26,4 @@ Route::post('threads', 'ThreadsController@store');
 Route::post('/threads/{channel}/{thread}/replies', 'RepliesController@store')->name('add_reply');
 
 Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
+Route::post('/replies/{reply}/favorites/toggle', 'FavoritesController@toggle');
