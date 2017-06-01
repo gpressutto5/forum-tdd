@@ -63,7 +63,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Channels <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                @foreach(App\Channel::all()->take(10) as $channel)
+                                @foreach($channels->take(10) as $channel)
                                     <li><a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a></li>
                                 @endforeach
                                 <li class="divider"></li>
